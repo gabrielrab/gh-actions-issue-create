@@ -1,0 +1,19 @@
+on: push
+
+name: Github issue create
+
+jobs:
+  createIssue:
+    name: Create analytics issue
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@main
+      - name: Craete issue
+        uses: bryannice/gitactions-git-issue-creation@master
+        env: 
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+          GITHUB_COMMIT_SHA: ${{ github.sha }}
+          GITHUB_REPO_OWNER: 'gabrielrab'
+          GITHUB_REPO_NAME: 'gh-actions-issue-create'
+          GITHUB_ISSUE_TITLE: 'Demo''ing Git Issue Creation'
+          GITHUB_ISSUE_BODY: 'Demo''ing Git Issue Creation'
