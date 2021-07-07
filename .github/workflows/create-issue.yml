@@ -19,7 +19,6 @@ jobs:
             ## Try create using github actions
           pinned: false
           close-previous: false
-
-          env: 
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        env: 
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
