@@ -21,13 +21,13 @@ jobs:
           echo "== 🔍 List of all changed files: =="
           git diff --name-only HEAD^ HEAD
 
-          echo "== ⚙️ List of only 'client' changed files: =="
+          echo "== ⚙️ List of only 'database' changed files: =="
           git diff --name-only HEAD^ HEAD > files.txt
           while IFS= read -r file
           do
             echo $file
-            if [[ $file = client/* ]]; then
-              echo "This modified file is under the 'client' folder."
+            if [[ $file = database/* ]]; then
+              echo "This modified file is under the 'database' folder."
               echo "::set-output name=run_job::true"
               break
             else
