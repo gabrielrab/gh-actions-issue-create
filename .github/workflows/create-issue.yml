@@ -20,7 +20,6 @@ jobs:
         run: |
           echo "List of changed files:"
           git diff --name-only HEAD^ HEAD > files.txt
-          echo "List of only 'database' changed files:"
           while IFS= read -r file
           do
             echo $file
@@ -33,7 +32,7 @@ jobs:
             fi
           done < files.txt
 
-  create_issue:
+  create_analytic_issue:
     name: Create analytics issue
     runs-on: ubuntu-latest
     needs: check_modified_files
