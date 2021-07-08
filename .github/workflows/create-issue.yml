@@ -18,8 +18,9 @@ jobs:
       - name: Check modified files
         id: check_files
         run: |
-          echo "List of only 'database' changed files:"
+          echo "List of changed files:"
           git diff --name-only HEAD^ HEAD > files.txt
+          echo "List of only 'database' changed files:"
           while IFS= read -r file
           do
             echo $file
@@ -40,7 +41,7 @@ jobs:
     permissions:
       issues: write
     steps:
-      - name: Craete issue
+      - name: Create issue
         uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
         with:
           assignees: "${{ github.event.pusher.name }}"
