@@ -12,13 +12,14 @@ jobs:
       - name: Craete issue
         uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
         with:
-          assignees: "gabrielrab"
+          assignees: "{{ github.actor }}"
           labels: "analytics, chore"
           title: "Try create issue using github actions"
           body: |
             ## Try create using github actions
+
+            follow me
           pinned: false
           close-previous: false
-        env: 
+        env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
