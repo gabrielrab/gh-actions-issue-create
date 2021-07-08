@@ -24,8 +24,8 @@ jobs:
           while IFS= read -r file
           do
             echo $file
-            if [[ $file = client/* ]]; then
-              echo "This modified file is under the 'client' folder."
+            if [[ $file = database/* ]]; then
+              echo "This modified file is under the 'database' folder."
               echo "::set-output name=create_issue::true"
               break
             else
