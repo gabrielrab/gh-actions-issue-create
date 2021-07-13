@@ -7,7 +7,6 @@ jobs:
     name: Check modified files
     outputs:
       run_job: ${{ steps.check_files.outputs.run_job }}
-      updated_files: ${{ steps.check_files.outputs.updated_files }}
     runs-on: ubuntu-latest
 
     steps:
