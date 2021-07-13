@@ -20,7 +20,6 @@ jobs:
         id: check_files
         run: |
           echo "== 🔍 List of all changed files: =="
-          echo "::set-output name=modified_files::$(git diff --name-only HEAD^ HEAD)"
           git diff --name-only HEAD^ HEAD > files.txt
           while IFS= read -r file
           do
@@ -28,7 +27,7 @@ jobs:
             if [[ $file = database/* ]]; then
               echo "This modified file is under the 'database' folder."
               echo "::set-output name=run_job::true"
-              break
+              echo "::set-output name=modified_files::$(steps.check_files.outputs.modified_files),$(file)"
             else
               echo "::set-output name=run_job::false"
             fi
