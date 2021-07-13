@@ -19,7 +19,7 @@ jobs:
         id: check_files
         run: |
           echo "== 🔍 List of all changed files: =="
-          git diff --name-only HEAD^ HEAD
+          git diff --name-only HEAD^ HEAD > files.txt
           while IFS= read -r file
           do
             echo $file
