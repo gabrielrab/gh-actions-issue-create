@@ -1,15 +1,19 @@
 name: Auto Semantic Version
 on:
-  push:
+  pull_request:
     branches:
       - main
       - "feature/*"
 
 jobs:
   make-version:
-    name: "Create version"
+    name: "Create version..."
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - uses: paulhatch/semantic-version@v4.0.2
         with:
           tag_prefix: "v"
