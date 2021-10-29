@@ -1,26 +1,17 @@
-name: Auto Semantic Version
+name: Bump version
 on:
-  pull_request:
+  push:
     branches:
       - main
-      - "feature/*"
-
 jobs:
-  make-version:
-    name: "Create version..."
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
         with:
-          fetch-depth: 0
-      - uses: paulhatch/semantic-version@v4.0.2
-        with:
-          tag_prefix: "v"
-          major_pattern: "(MAJOR)"
-          minor_pattern: "(MINOR)"
-          format: "${major}.${minor}.${patch}-${increment}"
-          change_path: "/"
-          namespace: logg
-          short_tags: true
-          bump_each_commit: false
+          fetch-depth: "0"
+      - name: Bump version and push tag
+        uses: anothrNick/github-tag-action@1.36.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          WITH_V: true
