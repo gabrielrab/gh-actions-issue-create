@@ -11,5 +11,5 @@ jobs:
       - uses: hkusu/review-assign-action@v1
         with:
           assignees: ${{ github.actor }}
-          reviewers: gabrielrab
+          reviewers: @gabrielrab
           merged-comment: "It was merged. Thanks for your review :wink: <reviewers>"
