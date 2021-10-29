@@ -1,6 +1,6 @@
 name: Auto Semantic Version
 on:
-  pull-request:
+  push:
     branches:
       - main
       - "feature/*"
