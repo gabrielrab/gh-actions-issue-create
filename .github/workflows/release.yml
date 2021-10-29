@@ -1,0 +1,25 @@
+name: Auto Semantic Version
+on:
+  pull-request:
+    branches:
+      - main
+      - "feature/*"
+
+jobs: 
+  make-version: 
+    name: "Create version"
+    runs-on: ubuntu-latest
+
+    steps:
+      name: "Generate version"
+      - uses: paulhatch/semantic-version@v4.0.2
+        with:
+          tag_prefix: "v"
+          major_pattern: "(MAJOR)"
+          minor_pattern: "(MINOR)"
+          format: "${major}.${minor}.${patch}-${increment}"
+          change_path: "/"
+          namespace: logg
+          short_tags: true
+          bump_each_commit: false
+      
