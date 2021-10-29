@@ -5,13 +5,11 @@ on:
       - main
       - "feature/*"
 
-jobs: 
-  make-version: 
+jobs:
+  make-version:
     name: "Create version"
     runs-on: ubuntu-latest
-
     steps:
-      name: "Generate version"
       - uses: paulhatch/semantic-version@v4.0.2
         with:
           tag_prefix: "v"
@@ -22,4 +20,3 @@ jobs:
           namespace: logg
           short_tags: true
           bump_each_commit: false
-      
